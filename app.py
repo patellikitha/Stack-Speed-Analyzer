@@ -1,21 +1,29 @@
 
 # app.py
 
-from flask import Flask
+from flask import Flask, render_template
+from collections import deque
 
-# Create the Flask application
 app = Flask(__name__)
 
-# Basic home route
+# Data structures
+booking_queue = deque()
+ticket_stack = []
+
+# Message to display on the home page
+last_operation = "🎬 Welcome to Movie Ticket Booking System!"
+
+
 @app.route("/")
 def home():
-    return """
-    <h1>🎬 Movie Ticket Booking System</h1>
-    <p>Flask application initialized successfully!</p>
-    """
+    return render_template(
+        "index.html",
+        queue=list(booking_queue),
+        stack=list(reversed(ticket_stack)),
+        operation=last_operation
+    )
 
 
-# Run the application
 if __name__ == "__main__":
     app.run(debug=True)
 

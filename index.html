@@ -1,4 +1,5 @@
 
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,33 @@
 
     <div class="container">
         <h1>🎬 Movie Ticket Booking System</h1>
-        <p>Welcome to the Movie Ticket Booking System.</p>
+
+        <p>{{ operation }}</p>
+
+        <h2>Customer Queue</h2>
+        <ul>
+            {% if queue %}
+                {% for customer in queue %}
+                    <li>{{ customer }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No customers in queue.</li>
+            {% endif %}
+        </ul>
+
+        <h2>Ticket Stack</h2>
+        <ul>
+            {% if stack %}
+                {% for ticket in stack %}
+                    <li>{{ ticket }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No tickets in stack.</li>
+            {% endif %}
+        </ul>
+
     </div>
 
 </body>
 </html>
-
+```
