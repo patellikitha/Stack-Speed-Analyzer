@@ -1,4 +1,3 @@
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -12,31 +11,37 @@
 <body>
 
     <div class="container">
+
         <h1>🎬 Movie Ticket Booking System</h1>
 
-        <p>{{ operation }}</p>
+        <div class="card">
+            <h2>🍿 Customer Queue (FIFO)</h2>
 
-        <h2>Customer Queue</h2>
-        <ul>
-            {% if queue %}
-                {% for customer in queue %}
-                    <li>{{ customer }}</li>
-                {% endfor %}
-            {% else %}
-                <li>No customers in queue.</li>
-            {% endif %}
-        </ul>
+            <form action="/enqueue" method="POST">
+                <input
+                    type="text"
+                    name="customer"
+                    placeholder="Enter Customer Name"
+                    required
+                >
 
-        <h2>Ticket Stack</h2>
-        <ul>
-            {% if stack %}
-                {% for ticket in stack %}
-                    <li>{{ ticket }}</li>
-                {% endfor %}
-            {% else %}
-                <li>No tickets in stack.</li>
-            {% endif %}
-        </ul>
+                <button type="submit">
+                    Join Queue
+                </button>
+            </form>
+
+            <h3>Waiting Customers</h3>
+
+            <ul>
+                {% if queue %}
+                    {% for customer in queue %}
+                        <li>{{ customer }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>Queue Empty</li>
+                {% endif %}
+            </ul>
+        </div>
 
     </div>
 
