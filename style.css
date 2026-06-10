@@ -1,33 +1,184 @@
+/* ===========================
+   Movie Ticket Booking System
+   =========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc, #ff6a88);
+    padding: 30px;
+}
+
+/* Main Container */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Heading */
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 42px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 25px;
+}
 
 .card {
     background: white;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+
+.card h2 {
+    color: #6a11cb;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    text-align: center;
+    color: #ff6a00;
+    margin-top: 20px;
+}
+
+/* Forms */
 
 form {
     display: flex;
     gap: 10px;
-    margin: 15px 0;
+    margin-bottom: 12px;
 }
 
 input {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    font-size: 15px;
 }
+
+input:focus {
+    outline: none;
+    border-color: #2575fc;
+}
+
+/* Buttons */
 
 button {
-    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 15px;
+    font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
+    color: white;
 }
 
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Queue Button */
+
+form button {
+    background: #00b894;
+}
+
+/* Book Ticket */
+
+.blue {
+    width: 100%;
+    margin-top: 10px;
+    background: #0984e3;
+}
+
+/* Pop Ticket */
+
+.red {
+    width: 100%;
+    margin-top: 10px;
+    background: #e84393;
+}
+
+/* Lists */
+
 ul {
+    list-style: none;
     margin-top: 15px;
 }
 
 li {
-    margin-bottom: 8px;
+    background: #fff3cd;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-left: 6px solid orange;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
+/* Latest Activity */
+
+.operation {
+    margin-top: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.operation h2 {
+    text-align: center;
+    color: #d63031;
+    margin-bottom: 15px;
+}
+
+.operation p {
+    text-align: center;
+    font-size: 18px;
+    color: #2d3436;
+    line-height: 1.8;
+}
+
+/* Remove underline from links */
+
+a {
+    text-decoration: none;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    input,
+    button {
+        width: 100%;
+    }
+
+}
