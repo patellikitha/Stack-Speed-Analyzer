@@ -4,24 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Ticket Booking System</title>
+    <title>🎬 Movie Ticket Booking System</title>
 
+    <!-- Link CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <div class="container">
 
+        <!-- Title -->
         <h1>🎬 Movie Ticket Booking System</h1>
 
         <div class="cards">
 
-            <!-- Customer Queue -->
+            <!-- ================= QUEUE ================= -->
             <div class="card">
 
                 <h2>🍿 Customer Queue (FIFO)</h2>
 
                 <form action="/enqueue" method="POST">
+
                     <input
                         type="text"
                         name="customer"
@@ -32,6 +35,7 @@
                     <button type="submit">
                         Join Queue
                     </button>
+
                 </form>
 
                 <a href="/dequeue">
@@ -54,7 +58,7 @@
 
             </div>
 
-            <!-- Ticket Stack -->
+            <!-- ================= STACK ================= -->
             <div class="card">
 
                 <h2>🎫 Issued Ticket Stack (LIFO)</h2>
@@ -74,9 +78,11 @@
 
                 </form>
 
-                <button type="button">
-                    Pop Ticket
-                </button>
+                <a href="/pop">
+                    <button type="button">
+                        Pop Ticket
+                    </button>
+                </a>
 
                 <h3>Issued Tickets</h3>
 
@@ -91,6 +97,17 @@
                 </ul>
 
             </div>
+
+        </div>
+
+        <!-- ================= LATEST ACTIVITY ================= -->
+        <div class="operation">
+
+            <h2>Latest Activity</h2>
+
+            <p>
+                {{ operation }}
+            </p>
 
         </div>
 
