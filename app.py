@@ -1,14 +1,14 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from collections import deque
 
 app = Flask(__name__)
 
-# Queue and Stack data structures
+# Queue and Stack
 booking_queue = deque()
 ticket_stack = []
 
-# Default message
+# Latest operation message
 last_operation = "Welcome to the Movie Ticket Booking System!"
 
 
@@ -20,6 +20,22 @@ def home():
         stack=list(reversed(ticket_stack)),
         operation=last_operation
     )
+
+
+# Add customer to the queue
+@app.route("/enqueue", methods=["POST"])
+def enqueue():
+    global last_operation
+
+    customer = request.form.get("customer")
+
+    if customer:
+        booking_queue.append(customer)
+        last_operation = f"{customer} joined the booking queue."
+    else:
+        last_operation = "Please enter a customer name."
+
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
