@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Movie Ticket Booking System 🍿</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Title -->
+        <h1>🎬✨ Movie Ticket Booking System 🍿🎟️</h1>
+
+        <div class="cards">
+
+            <!-- ================= QUEUE ================= -->
+
+            <div class="card">
+
+                <h2>🍿 Customer Queue (FIFO)</h2>
+
+                <form action="/enqueue" method="POST">
+
+                    <input
+                        type="text"
+                        name="customer"
+                        placeholder="👤 Enter Customer Name"
+                        required>
+
+                    <button type="submit">
+                        ➕ Join Queue
+                    </button>
+
+                </form>
+
+                <a href="/dequeue">
+                    <button type="button" class="blue">
+                        🎟️ Book Ticket
+                    </button>
+                </a>
+
+                <h3 style="margin-top:20px;">👥 Waiting Customers</h3>
+
+                <ul>
+                    {% if queue %}
+
+                        {% for item in queue %}
+                            <li>😀 {{ item }}</li>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <li>🚫 Queue Empty</li>
+
+                    {% endif %}
+                </ul>
+
+            </div>
+
+            <!-- ================= STACK ================= -->
+
+            <div class="card">
+
+                <h2>🎫 Issued Ticket Stack (LIFO)</h2>
+
+                <form action="/push" method="POST">
+
+                    <input
+                        type="text"
+                        name="ticket"
+                        placeholder="🎫 Enter Ticket ID"
+                        required>
+
+                    <button type="submit">
+                        📥 Push Ticket
+                    </button>
+
+                </form>
+
+                <a href="/pop">
+                    <button type="button" class="red">
+                        ❌ Pop Ticket
+                    </button>
+                </a>
+
+                <h3 style="margin-top:20px;">⭐ Issued Tickets</h3>
+
+                <ul>
+                    {% if stack %}
+
+                        {% for item in stack %}
+                            <li>🎫 {{ item }}</li>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <li>📂 Stack Empty</li>
+
+                    {% endif %}
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- ================= LAST OPERATION ================= -->
+
+        <div class="operation">
+
+            <h2>📢 Latest Activity & Time Analysis ⏱️</h2>
+
+            <p>
+                {{ operation | safe }}
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
