@@ -22,7 +22,7 @@ def home():
     )
 
 
-# Add customer to the queue
+# Enqueue customer
 @app.route("/enqueue", methods=["POST"])
 def enqueue():
     global last_operation
@@ -34,6 +34,20 @@ def enqueue():
         last_operation = f"{customer} joined the booking queue."
     else:
         last_operation = "Please enter a customer name."
+
+    return redirect(url_for("home"))
+
+
+# Dequeue customer
+@app.route("/dequeue")
+def dequeue():
+    global last_operation
+
+    if booking_queue:
+        customer = booking_queue.popleft()
+        last_operation = f"Ticket booked for {customer}."
+    else:
+        last_operation = "Booking queue is empty."
 
     return redirect(url_for("home"))
 

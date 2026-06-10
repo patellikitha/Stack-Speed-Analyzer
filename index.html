@@ -1,50 +1,43 @@
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Ticket Booking System</title>
+<!-- Customer Queue -->
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+<div class="card">
 
-    <div class="container">
+    <h2>🍿 Customer Queue (FIFO)</h2>
 
-        <h1>🎬 Movie Ticket Booking System</h1>
+    <form action="/enqueue" method="POST">
 
-        <div class="card">
-            <h2>🍿 Customer Queue (FIFO)</h2>
+        <input
+            type="text"
+            name="customer"
+            placeholder="Enter Customer Name"
+            required
+        >
 
-            <form action="/enqueue" method="POST">
-                <input
-                    type="text"
-                    name="customer"
-                    placeholder="Enter Customer Name"
-                    required
-                >
+        <button type="submit">
+            Join Queue
+        </button>
 
-                <button type="submit">
-                    Join Queue
-                </button>
-            </form>
+    </form>
 
-            <h3>Waiting Customers</h3>
+    <!-- Book Ticket Button -->
+    <a href="/dequeue">
+        <button type="button">
+            Book Ticket
+        </button>
+    </a>
 
-            <ul>
-                {% if queue %}
-                    {% for customer in queue %}
-                        <li>{{ customer }}</li>
-                    {% endfor %}
-                {% else %}
-                    <li>Queue Empty</li>
-                {% endif %}
-            </ul>
-        </div>
+    <h3>Waiting Customers</h3>
 
-    </div>
+    <ul>
+        {% if queue %}
+            {% for customer in queue %}
+                <li>{{ customer }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Queue Empty</li>
+        {% endif %}
+    </ul>
 
-</body>
-</html>
+</div>
 ```
